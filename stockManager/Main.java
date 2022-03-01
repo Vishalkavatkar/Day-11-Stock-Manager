@@ -15,7 +15,9 @@ public class Main {
 		 ** Loop to always ask for the options and call that function
 		 */
 		while (true) {
-			System.out.println(" 1: To Add New Stock \n 2: To Display StockPortfolio ");
+			int bal = obj.balance;
+			System.out.println("current balance: "+bal );
+			System.out.println(" 1: To Add New Stock \n 2: To Display StockPortfolio \n 3: To Withdraw ");
 			System.out.println("Enter your choice: ");
 			int opt = sc.nextInt();
 
@@ -25,6 +27,9 @@ public class Main {
 				break;
 			case 2:
 				obj.stockReport();
+				break;
+			case 3:
+				obj.debit();
 				break;
 			default:
 				System.out.println("Invalid Input");

@@ -8,10 +8,15 @@ public class StockPortfolio {
 	ArrayList<Integer> numberOfShares = new ArrayList<Integer>(); // ArrayList to store
 	ArrayList<Integer> sharePrice = new ArrayList<Integer>(); // ArrayList to store
 	Scanner sc = new Scanner(System.in);
-	int balance;
-
-	// method to Perform Add Stocks
-	 
+	int balance = 1000; // declare final balance
+	
+	/*
+	 * public void currentBal() { System.out.println("Current balance: " +balance);
+	 * }
+	 */
+	/*
+	 * method to Perform Add Stocks
+	 */
 	public void addStocks() {
 
 		System.out.print("Enter the stock name: ");
@@ -25,19 +30,39 @@ public class StockPortfolio {
 
 	}
 
-	// method to perform Stock Report
-	
+	/*
+	 * method to perform Stock Report
+	 */
 
 	public void stockReport() {
 		int sum = 0;
 		System.out.println("******STOCK PORTFOLIO*****");
-		for (int i = 0; i < stockName.size(); i++) 
-		{
+		for (int i = 0; i < stockName.size(); i++) {
 			int total = (numberOfShares.get(i) * sharePrice.get(i));
-
+			balance=balance-total;
+			sum=sum+total;
 			System.out.println("Stock name= " + stockName.get(i) + "\nValue of each share= " + sharePrice.get(i)
 					+ "\nTotal value of share= " + total);
-
+			System.out.println("Balance Remaining: " +balance);
+		}
+	}
+	
+	/*
+	 * methods to perform Withdraw 
+	 */
+	public void debit()
+	{
+		System.out.println("Enter the amount want to withdraw: ");
+		int Withdraw = sc.nextInt();
+		if(Withdraw<balance)
+		{
+			balance=balance-Withdraw;
+			System.out.println("****Debit is Successfull****");
+			System.out.println("Remaining Balance: "+balance);
+		}
+		else
+		{
+			System.out.println("Sorry Debit amount exceeds account balance");
 		}
 	}
 }
